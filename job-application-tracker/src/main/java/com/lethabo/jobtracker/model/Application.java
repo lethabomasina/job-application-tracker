@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Application {
@@ -13,6 +15,8 @@ public class Application {
     private Long id;
     private String company;
     private String position;
+
+    @Enumerated(EnumType.STRING)
     private ApplicationStatus status;
     private String location;
     private String notes;

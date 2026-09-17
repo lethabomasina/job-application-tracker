@@ -2,9 +2,9 @@ POST http://localhost:8080/applications
 Content-Type: application/json
 
 {
-  "company": "Microsoft",
-  "position": "Junior Software Developer",
-  "status": "INTERVIEW",
-  "location": "Pretoria",
+  "company": "Google",
+  "position": "Web Developer",
+  "status": "OFFER",
+  "location": "Cape Town",
   "notes": "Applied through LinkedIn"
 }
