@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/applications/{id}")
-    public Optional<Application> getApplication(@PathVariable Long id) {
+    public Application getApplication(@PathVariable Long id) {
         return applicationService.getApplication(id);
     }
 
@@ -41,9 +42,14 @@ public class ApplicationController {
 
     @DeleteMapping("/applications/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {
-        if (applicationService.deleteApplication(id)) {
-            return ResponseEntity.status(204).build();
-        }
-        return ResponseEntity.status(404).build();
+        applicationService.deleteApplication(id);
+        return ResponseEntity.status(204).build();
+    }
+
+    @PutMapping("/applications/{id}")
+    public Application updateApplication(@PathVariable Long id,
+                                                         @RequestBody Application application)
+    {
+        return applicationService.updateApplication(id, application);
     }
 }
