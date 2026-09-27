@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
+import jakarta.validation.Valid;
 
 @RestController
 public class ApplicationController {
@@ -34,7 +35,7 @@ public class ApplicationController {
     }
 
     @PostMapping("/applications")
-    public ResponseEntity<Application> createApplication(@RequestBody Application application) {
+    public ResponseEntity<Application> createApplication(@RequestBody @Valid Application application) {
         Application createdApplication = applicationService.createApplication(application);
 
         return ResponseEntity.status(201).body(createdApplication);
@@ -48,7 +49,7 @@ public class ApplicationController {
 
     @PutMapping("/applications/{id}")
     public Application updateApplication(@PathVariable Long id,
-                                                         @RequestBody Application application)
+                                         @RequestBody @Valid Application application)
     {
         return applicationService.updateApplication(id, application);
     }

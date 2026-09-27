@@ -1,0 +1,32 @@
+### Get all applications
+GET http://localhost:8080/applications
+
+### Get application by ID
+GET http://localhost:8080/applications/1
+
+### Create application
+POST http://localhost:8080/applications
+Content-Type: application/json
+
+{
+  "company": "Amazon",
+  "position": "Front-End Developer",
+  "status": "APPLIED",
+  "location": "Johannesburg",
+  "notes": "Applied through company website"
+}
+
+### Update application
+PUT http://localhost:8080/applications/5
+Content-Type: application/json
+
+{
+  "company": "Amazon",
+  "position": "Front-End Developer",
+  "status": "INTERVIEW",
+  "location": "Johannesburg",
+  "notes": "Applied through company website"
+}
+
+### Delete application
+DELETE http://localhost:8080/applications/999

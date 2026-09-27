@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Application {
@@ -13,9 +15,14 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+
+    @NotBlank
     private String company;
+
+    @NotBlank
     private String position;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private ApplicationStatus status;
     private String location;
