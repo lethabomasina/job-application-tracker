@@ -1,6 +1,7 @@
 package com.lethabo.jobtracker.service;
 
 import com.lethabo.jobtracker.model.Application;
+import com.lethabo.jobtracker.model.ApplicationStatus;
 import com.lethabo.jobtracker.repository.ApplicationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,10 @@ public class ApplicationService {
         this.applicationRepository = applicationRepository;
     }
 
-    public List<Application> getApplications() {
+    public List<Application> getApplications(ApplicationStatus status) {
+        if (status != null) {
+            return applicationRepository.findByStatus(status);
+        }
         return applicationRepository.findAll();
     }
 
